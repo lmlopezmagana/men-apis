@@ -65,5 +65,8 @@
     "rand-token": "^0.4.0",
     "request": "^2.83.0",
     "request-promise": "^4.2.2"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }
