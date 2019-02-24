@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { middleware as query } from 'querymen'
 import { middleware as body } from 'bodymen'
 import { token, master } from '../../services/passport'
-import { create, index, show, update, destroy, userProperties, addFavorite, delFavorite, index2 } from './controller'
+import { create, index, show, update, destroy, userProperties, addFavorite, delFavorite, index2, userFavorites } from './controller'
 import { schema } from './model'
 export Property, { schema } from './model'
 
@@ -69,6 +69,25 @@ router.get('/mine',
   query(),
   userProperties)
 
+
+/**
+ * @api {get} /properties/favs Retrieve the favorite properties of a user
+ * @apiName RetrieveFavsProperties of a user
+ * @apiGroup Property
+ * @apiPermission user
+ * @apiParam {String} access_token user access token.
+ * @apiUse listParams
+ * @apiSuccess {Number} count Total amount of properties.
+ * @apiSuccess {Object[]} rows List of properties.
+ * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiError 401 master access only.
+ */
+router.get('/fav',
+  token({ required: true }),
+  query(),
+  userFavorites)
+
+
 /**
  * @api {get} /properties/:id Retrieve property
  * @apiName RetrieveProperty
@@ -123,6 +142,10 @@ router.put('/:id',
 router.delete('/:id',
   token({ required: true }),
   destroy)
+
+
+
+
 
 /**
  * @api {post} /properties/fav/:id Add a property as favorite

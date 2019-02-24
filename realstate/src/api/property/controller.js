@@ -141,11 +141,30 @@ export const destroy = ({ user, params }, res, next) =>
     .catch(next)
 
 export const addFavorite = ({user, params}, res, next) =>
-  User.findByIdAndUpdate(user.id, {$push: {favs: params.id}})
-    .then(success(res, 201))
+  User.findByIdAndUpdate(user.id, {$addToSet: {favs: params.id}}, {new : true})
+    .then(success(res, 200))
     .catch(next)
 
 export const delFavorite = ({user, params}, res, next) =>
-  User.findByIdAndUpdate(user.id, {$pull: {favs: params.id}})
-    .then(success(res, 204))
+  User.findByIdAndUpdate(user.id, {$pull: {favs: params.id}}, {new : true})
+    .then(success(res, 200))
     .catch(next)
+
+
+export const userFavorites = ({ user, querymen: { query, select, cursor } }, res, next) => {
+  query['_id'] = { $in: user.favs }
+  Property
+    .find(query, select, cursor)
+    .populate('categoryId', 'name')
+    .exec(function (err, properties){
+        Promise.all(properties.map(function(property){
+          return queryFirstPhoto(property)
+        }))
+        .then((result) => ({
+          count: result.length,
+          rows: result
+        }))
+        .then(success(res))
+        .catch(next)
+    })
+}
