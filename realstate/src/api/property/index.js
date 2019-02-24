@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { middleware as query } from 'querymen'
 import { middleware as body } from 'bodymen'
 import { token, master } from '../../services/passport'
-import { create, index, show, update, destroy, userProperties } from './controller'
+import { create, index, show, update, destroy, userProperties, addFavorite, delFavorite, index2 } from './controller'
 import { schema } from './model'
 export Property, { schema } from './model'
 
@@ -50,14 +50,14 @@ router.post('/',
 router.get('/',
   master(),
   query(),
-  index)
+  index2)
 
 /**
  * @api {get} /properties/mine Retrieve properties of a user
  * @apiName RetrieveProperties of a user
  * @apiGroup Property
- * @apiPermission master
- * @apiParam {String} access_token master access token.
+ * @apiPermission user
+ * @apiParam {String} access_token user access token.
  * @apiUse listParams
  * @apiSuccess {Number} count Total amount of properties.
  * @apiSuccess {Object[]} rows List of properties.
@@ -123,5 +123,31 @@ router.put('/:id',
 router.delete('/:id',
   token({ required: true }),
   destroy)
+
+/**
+ * @api {post} /properties/fav/:id Add a property as favorite
+ * @apiName AddFavProperty
+ * @apiGroup Property
+ * @apiPermission user
+ * @apiParam {String} access_token user access token.
+ * @apiSuccess {Object} user Users's data.
+ * @apiError 401 user access only.
+ */
+router.post('/fav/:id',
+  token({required: true}),
+  addFavorite)
+
+/**
+ * @api {delete} /properties/fav/:id Delete a property as a favorite
+ * @apiName DeleteFavProperty
+ * @apiGroup Property
+ * @apiPermission user
+ * @apiParam {String} access_token user access token.
+ * @apiSuccess (Success 204) 204 No Content.
+ * @apiError 401 user access only.
+ */
+router.delete('/fav/:id',
+  token({required: true}),
+  delFavorite)
 
 export default router

@@ -1,5 +1,7 @@
 import mongoose, { Schema } from 'mongoose'
 
+const uploadService = require('../../services/upload')
+
 const photoSchema = new Schema({
   propertyId: {
     type: Schema.ObjectId,
@@ -17,6 +19,12 @@ const photoSchema = new Schema({
     virtuals: true,
     transform: (obj, ret) => { delete ret._id }
   }
+})
+
+photoSchema.pre('remove', {query: true }, function(next){
+  console.log('Elminando la imagen' + this.imgurLink)
+  uploadService.deleteImage(this.deletehash)
+  return next();
 })
 
 photoSchema.methods = {
