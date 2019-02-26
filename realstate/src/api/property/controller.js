@@ -38,6 +38,7 @@ let queryFirstPhoto = (property) =>  {
         }
         else {
           let result = JSON.parse(JSON.stringify(property))
+          result['loc'] = property.loc;
           if (photos.length > 0)
             result['photos'] = [photos[0].imgurLink]
           resolve(result)
