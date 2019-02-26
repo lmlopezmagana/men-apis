@@ -44,8 +44,11 @@ const propertySchema = new Schema({
     type: String
   },
   loc: {
-    type: String,
-    required: true
+    // type: String,
+    type: [Number],
+    required: true,
+    get: (v) => v.join(),
+    set: (v) => v.split(',').map(Number),
   }
 }, {
   strict: false,

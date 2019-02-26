@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { middleware as query } from 'querymen'
 import { middleware as body } from 'bodymen'
 import { token, master } from '../../services/passport'
-import { create, index, show, update, destroy, userProperties, addFavorite, delFavorite, index2, userFavorites } from './controller'
+import { create, index, show, update, destroy, userProperties, addFavorite, delFavorite, userFavorites, authenticatedIndex } from './controller'
 import { schema } from './model'
 export Property, { schema } from './model'
 
@@ -50,7 +50,26 @@ router.post('/',
 router.get('/',
   master(),
   query(),
-  index2)
+  index)
+
+
+/**
+ * @api {get} /properties/auth/ Retrieve properties when user is authenticated
+ * @apiName RetrievePropertiesAuthenticated
+ * @apiGroup Property
+ * @apiPermission user
+ * @apiParam {String} access_token user access token.
+ * @apiUse listParams
+ * @apiSuccess {Number} count Total amount of properties.
+ * @apiSuccess {Object[]} rows List of properties.
+ * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiError 401 master access only.
+ */
+router.get('/auth',
+  token({ required: true }),
+  query(),
+  authenticatedIndex)
+
 
 /**
  * @api {get} /properties/mine Retrieve properties of a user

@@ -65,7 +65,7 @@ let queryAllPhotos = (property) => {
 }
 
 
-export const index2 = ({ querymen: { query, select, cursor } }, res, next) => {
+export const index = ({ querymen: { query, select, cursor } }, res, next) => {
   Property
     .find(query, select, cursor)
     .populate('ownerId', 'name picture')
@@ -74,6 +74,32 @@ export const index2 = ({ querymen: { query, select, cursor } }, res, next) => {
         Promise.all(properties.map(function(property){
           return queryFirstPhoto(property)
         }))
+        .then((result) => ({
+          count: result.length,
+          rows: result
+        }))
+        .then(success(res))
+        .catch(next)
+    })
+}
+
+export const authenticatedIndex = ({ user, querymen: { query, select, cursor } }, res, next) => {
+  Property
+    .find(query, select, cursor)
+    .populate('ownerId', 'name picture')
+    .populate('categoryId', 'name')
+    .exec(function (err, properties){
+        Promise.all(properties.map(function(property){
+          return queryFirstPhoto(property)
+        }))
+        .then((result) => result.map((property) => {
+            let favoriteProperty = JSON.parse(JSON.stringify(property))
+            console.log(user.favs);
+            console.log('Id ' + property.id)
+            favoriteProperty['isFav'] = user.favs.indexOf(property.id) > -1 //user.favs.includes(property.id) 
+            return favoriteProperty
+          })
+        )
         .then((result) => ({
           count: result.length,
           rows: result
