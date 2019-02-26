@@ -56,7 +56,8 @@ let queryAllPhotos = (property) => {
           reject(err)
         }
         else {
-          let result = JSON.parse(JSON.stringify(property))          
+          let result = JSON.parse(JSON.stringify(property))   
+          result['loc'] = property.loc;       
           let images = photos.map((photo) => photo.imgurLink)
           result['photos'] = images
           resolve(result)
