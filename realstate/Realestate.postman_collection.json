@@ -1,0 +1,699 @@
+{
+	"info": {
+		"_postman_id": "98dcc530-a4ae-42ea-8022-80f2236869a2",
+		"name": "Realestate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Add category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Obra nueva\"\n}"
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/categories?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YjE0ODFmMWRmMDAxNzYwYzdkNiIsImlhdCI6MTU1MDY4Njk5Nn0.juZrg-U6yy_cRs_btGShlenHYwVQLWOgPyhJUt1OgwQ",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YjE0ODFmMWRmMDAxNzYwYzdkNiIsImlhdCI6MTU1MDY4Njk5Nn0.juZrg-U6yy_cRs_btGShlenHYwVQLWOgPyhJUt1OgwQ"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/categories?access_token={{MASTERKEY}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{MASTERKEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"luismi.lopez@salesianos.edu\",\n\t\"password\": \"12345678\",\n\t\"name\": \"Luis Miguel López\"\n}"
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/users?access_token={{MASTERKEY}}",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{MASTERKEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"admin@admin.com\",\n\t\"password\": \"12345678\",\n\t\"name\": \"Luis Miguel López (Admin)\",\n\t\"role\": \"admin\"\n}"
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/users?access_token={{MASTERKEY}}",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{MASTERKEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "luismi.lopez@salesianos.edu",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/auth?access_token={{MASTERKEY}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{MASTERKEY}}"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/users/me?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTEyMjI4M30.XMh65tB_pmNr74azqJzj45zhfoWTnpOTYKgW08bQ3zA",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"me"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTEyMjI4M30.XMh65tB_pmNr74azqJzj45zhfoWTnpOTYKgW08bQ3zA"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/users?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YjE0ODFmMWRmMDAxNzYwYzdkNiIsImlhdCI6MTU1MTAzMDA4Nn0.RAedx-6xIlPNSU9Tjpa30caChWo6ByKfZA6OMQCZFrs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YjE0ODFmMWRmMDAxNzYwYzdkNiIsImlhdCI6MTU1MTAzMDA4Nn0.RAedx-6xIlPNSU9Tjpa30caChWo6ByKfZA6OMQCZFrs"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Properties",
+			"item": [
+				{
+					"name": "New property",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Alquiler de Piso en Pelay Correa, 13\",\n\t\"description\": \"En perfecto estado, apartamento de 2 dormitorios, salón, baño y cocina, climatizado, buenas calidades, construcción año 2003. Precioso patio sevillano, tranquilo y con mucho encanto\",\n\t\"price\": 650,\n\t\"rooms\": 2,\n\t\"size\": 65,\n\t\"categoryId\": \"5c6d9b4381f1df001760c7d7\",\n\t\"address\": \"c/ Pelay Correa, 13\",\n\t\"zipcode\": \"41010\",\n\t\"city\": \"Sevilla\",\n\t\"province\": \"Sevilla\",\n\t\"loc\": \"37.383629, -6.002002\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/properties?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTE4MDA4M30.fnUeLoyCIQrcgyqL_Df-hc1ph_l8IWGaIH21FVYlsfo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"properties"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTE4MDA4M30.fnUeLoyCIQrcgyqL_Df-hc1ph_l8IWGaIH21FVYlsfo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all properties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/properties?access_token={{MASTERKEY}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"properties"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{MASTERKEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all properties for auth users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/properties/auth?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTE4MDA4M30.fnUeLoyCIQrcgyqL_Df-hc1ph_l8IWGaIH21FVYlsfo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"properties",
+								"auth"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTE4MDA4M30.fnUeLoyCIQrcgyqL_Df-hc1ph_l8IWGaIH21FVYlsfo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List favorites",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/properties/favs?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YjE0ODFmMWRmMDAxNzYwYzdkNiIsImlhdCI6MTU1MTAzMDA4Nn0.RAedx-6xIlPNSU9Tjpa30caChWo6ByKfZA6OMQCZFrs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"properties",
+								"favs"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YjE0ODFmMWRmMDAxNzYwYzdkNiIsImlhdCI6MTU1MTAzMDA4Nn0.RAedx-6xIlPNSU9Tjpa30caChWo6ByKfZA6OMQCZFrs"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Favorite",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/properties/fav/5c72d6f8972cb523252cb1b8?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTEyMjI4M30.XMh65tB_pmNr74azqJzj45zhfoWTnpOTYKgW08bQ3zA",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"properties",
+								"fav",
+								"5c72d6f8972cb523252cb1b8"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTEyMjI4M30.XMh65tB_pmNr74azqJzj45zhfoWTnpOTYKgW08bQ3zA"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Properties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://morning-chamber-30708.herokuapp.com/properties/mine?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTA5MjMzN30.2yEQel2ma93wi3NaEE33YQ6pXJmTRO4tlQMIKPof7Tk",
+							"protocol": "https",
+							"host": [
+								"morning-chamber-30708",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"properties",
+								"mine"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTA5MjMzN30.2yEQel2ma93wi3NaEE33YQ6pXJmTRO4tlQMIKPof7Tk"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one property",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:5000/properties/?access_token={{MASTERKEY}}",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"properties",
+								""
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{MASTERKEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete property",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/properties/5c7043109d815e38a7dec372?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MDgzNjc2M30.ZjTBci85UErym804zYAbK9nfj3EKYXmcOh3unVzEtPE",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"properties",
+								"5c7043109d815e38a7dec372"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MDgzNjc2M30.ZjTBci85UErym804zYAbK9nfj3EKYXmcOh3unVzEtPE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete property as favorite",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/properties/fav/5c72d6f8972cb523252cb1b8?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YjE0ODFmMWRmMDAxNzYwYzdkNiIsImlhdCI6MTU1MTAzMDA4Nn0.RAedx-6xIlPNSU9Tjpa30caChWo6ByKfZA6OMQCZFrs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"properties",
+								"fav",
+								"5c72d6f8972cb523252cb1b8"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YjE0ODFmMWRmMDAxNzYwYzdkNiIsImlhdCI6MTU1MTAzMDA4Nn0.RAedx-6xIlPNSU9Tjpa30caChWo6ByKfZA6OMQCZFrs"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Photos",
+			"item": [
+				{
+					"name": "Add Photo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "propertyId",
+									"value": "5c72d6f8972cb523252cb1b8",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/photos?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTA5MjMzN30.2yEQel2ma93wi3NaEE33YQ6pXJmTRO4tlQMIKPof7Tk",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"photos"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTA5MjMzN30.2yEQel2ma93wi3NaEE33YQ6pXJmTRO4tlQMIKPof7Tk"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Nestoria",
+			"item": [
+				{
+					"name": "https://api.nestoria.es/api?encoding=json&pretty=1&action=search_listings&country=es&listing_type=buy&place_name=sevilla",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6dc54f2f-f58a-42bb-879b-c90d8dcfbfc2",
+								"exec": [
+									"const result = _.map(pm.response.json().response.listings, data => ({",
+									"    title: data.title,",
+									"    description: data.summary",
+									"}));",
+									"",
+									"console.log(result);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.nestoria.es/api?encoding=json&pretty=1&action=search_listings&country=es&listing_type=buy&place_name=sevilla",
+							"protocol": "https",
+							"host": [
+								"api",
+								"nestoria",
+								"es"
+							],
+							"path": [
+								"api"
+							],
+							"query": [
+								{
+									"key": "encoding",
+									"value": "json"
+								},
+								{
+									"key": "pretty",
+									"value": "1"
+								},
+								{
+									"key": "action",
+									"value": "search_listings"
+								},
+								{
+									"key": "country",
+									"value": "es"
+								},
+								{
+									"key": "listing_type",
+									"value": "buy"
+								},
+								{
+									"key": "place_name",
+									"value": "sevilla"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "98101f2a-7a12-4aee-88f0-41f8fc279dfc",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "51a89268-cf8f-427f-939c-3d397e19acfa",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "0efc0d98-a812-4166-9f61-68cf5448eb82",
+			"key": "MASTERKEY",
+			"value": "hzasFUC4txHXVHHWvjkR2R7UxQ6kzBlw",
+			"type": "string"
+		},
+		{
+			"id": "8e607371-e098-4cb9-a26c-d37df2c2ef3c",
+			"key": "URL_REMOTA",
+			"value": "https://morning-chamber-30708.herokuapp.com/",
+			"type": "string"
+		},
+		{
+			"id": "c78a65d7-662a-4bbd-b59e-0684586ba047",
+			"key": "URL_LOCAL\n",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+}

@@ -24,7 +24,9 @@
 	- [Create property](#create-property)
 	- [Delete a property as a favorite](#delete-a-property-as-a-favorite)
 	- [Delete property](#delete-property)
+	- [Retrieve the favorite properties of a user](#retrieve-the-favorite-properties-of-a-user)
 	- [Retrieve properties](#retrieve-properties)
+	- [Retrieve properties when user is authenticated](#retrieve-properties-when-user-is-authenticated)
 	- [Retrieve properties of a user](#retrieve-properties-of-a-user)
 	- [Retrieve property](#retrieve-property)
 	- [Update property](#update-property)
@@ -276,6 +278,24 @@
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>user access token.</p>							|
 
+## Retrieve the favorite properties of a user
+
+
+
+	GET /properties/favs
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
 ## Retrieve properties
 
 
@@ -288,6 +308,24 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>master access token.</p>							|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Retrieve properties when user is authenticated
+
+
+
+	GET /properties/auth/
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
 | q			| String			| **optional** <p>Query to search.</p>							|
 | page			| Number			| **optional** <p>Page number.</p>							|
 | limit			| Number			| **optional** <p>Amount of returned items.</p>							|

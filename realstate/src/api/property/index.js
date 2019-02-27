@@ -90,7 +90,7 @@ router.get('/mine',
 
 
 /**
- * @api {get} /properties/favs Retrieve the favorite properties of a user
+ * @api {get} /properties/fav Retrieve the favorite properties of a user
  * @apiName RetrieveFavsProperties of a user
  * @apiGroup Property
  * @apiPermission user

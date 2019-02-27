@@ -184,6 +184,7 @@ export const userFavorites = ({ user, querymen: { query, select, cursor } }, res
   Property
     .find(query, select, cursor)
     .populate('categoryId', 'name')
+    .populate('ownerId', 'name picture')
     .exec(function (err, properties){
         Promise.all(properties.map(function(property){
           return queryFirstPhoto(property)
