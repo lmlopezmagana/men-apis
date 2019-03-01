@@ -1,0 +1,4 @@
+{
+    "eslint.enable": false,
+    "debug.node.autoAttach": "on"
+}
