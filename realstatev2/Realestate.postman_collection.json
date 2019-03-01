@@ -1,0 +1,747 @@
+{
+	"info": {
+		"_postman_id": "98dcc530-a4ae-42ea-8022-80f2236869a2",
+		"name": "Realestate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Add category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Venta\"\n}"
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/categories?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNzZkNGZmNzExYWUyNThkYzA0YzM1YiIsImlhdCI6MTU1MTI5MTY0N30.rHPlS1uKjXu3MfKEeT7dtXWGIKJCE_DrnjgZKhYOwpg",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNzZkNGZmNzExYWUyNThkYzA0YzM1YiIsImlhdCI6MTU1MTI5MTY0N30.rHPlS1uKjXu3MfKEeT7dtXWGIKJCE_DrnjgZKhYOwpg"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/categories?access_token={{MASTERKEY}}",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{MASTERKEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"luismi.lopez@salesianos.edu\",\n\t\"password\": \"12345678\",\n\t\"name\": \"Luis Miguel López\"\n}"
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/users?access_token={{MASTERKEY}}",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{MASTERKEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"admin@admin.com\",\n\t\"password\": \"12345678\",\n\t\"name\": \"Luis Miguel López (Admin)\",\n\t\"role\": \"admin\"\n}"
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/users?access_token={{MASTERKEY}}",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{MASTERKEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "rocio.lara.guerrero24@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/auth?access_token={{MASTERKEY}}",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"auth"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{MASTERKEY}}"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/users/me?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTEyMjI4M30.XMh65tB_pmNr74azqJzj45zhfoWTnpOTYKgW08bQ3zA",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"users",
+								"me"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTEyMjI4M30.XMh65tB_pmNr74azqJzj45zhfoWTnpOTYKgW08bQ3zA"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/users?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNzkyYTYzNzJlYjBhMDAxN2ExMmE5OSIsImlhdCI6MTU1MTQ0NDU4MH0.kh4rbGOvLE-vsw2BQu-LwfZfgQBbxhZBqT3bBqRN0v8",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNzkyYTYzNzJlYjBhMDAxN2ExMmE5OSIsImlhdCI6MTU1MTQ0NDU4MH0.kh4rbGOvLE-vsw2BQu-LwfZfgQBbxhZBqT3bBqRN0v8"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Properties",
+			"item": [
+				{
+					"name": "New property",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Alquiler de Piso en Condes de Bustillo 178\",\n\t\"description\": \"En perfecto estado, apartamento de 2 dormitorios, salón, baño y cocina, climatizado, buenas calidades, construcción año 2003. Precioso patio sevillano, tranquilo y con mucho encanto\",\n\t\"price\": 650,\n\t\"rooms\": 2,\n\t\"size\": 65,\n\t\"categoryId\": \"5c6d9b4381f1df001760c7d7\",\n\t\"address\": \"c/ Condes de Bustillo, 17\",\n\t\"zipcode\": \"41010\",\n\t\"city\": \"Sevilla\",\n\t\"province\": \"Sevilla\",\n\t\"loc\": \"37.383629,-6.002002\"\n}"
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/properties?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTE4MDA4M30.fnUeLoyCIQrcgyqL_Df-hc1ph_l8IWGaIH21FVYlsfo",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"properties"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTE4MDA4M30.fnUeLoyCIQrcgyqL_Df-hc1ph_l8IWGaIH21FVYlsfo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all properties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/properties?access_token={{MASTERKEY}}",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"properties"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{MASTERKEY}}"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "Mairena del Aljarafe",
+									"disabled": true
+								},
+								{
+									"key": "rooms",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "min_size",
+									"value": "50",
+									"disabled": true
+								},
+								{
+									"key": "max_size",
+									"value": "100",
+									"disabled": true
+								},
+								{
+									"key": "min_price",
+									"value": "400",
+									"disabled": true
+								},
+								{
+									"key": "max_price",
+									"value": "500",
+									"disabled": true
+								},
+								{
+									"key": "near",
+									"value": "-3.368520,38.008090",
+									"disabled": true
+								},
+								{
+									"key": "min_distance",
+									"value": "2000",
+									"disabled": true
+								},
+								{
+									"key": "max_distance",
+									"value": "10000",
+									"disabled": true
+								},
+								{
+									"key": "categoryId",
+									"value": "5c790304df19c31943a8c807",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "Percebe",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all properties for auth users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/properties/mine?access_token=&page=1&limit=10",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"properties",
+								"mine"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List favorites",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/properties/fav?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTI1NTUwOX0.Ynu8YlS49hLa5Lii2AdVp-SUHMoQcH0SkFBdsOm3m50",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"properties",
+								"fav"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTI1NTUwOX0.Ynu8YlS49hLa5Lii2AdVp-SUHMoQcH0SkFBdsOm3m50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Favorite",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/properties/fav/5c7646751d550d2498c04c4f?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTI1NTUwOX0.Ynu8YlS49hLa5Lii2AdVp-SUHMoQcH0SkFBdsOm3m50",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"properties",
+								"fav",
+								"5c7646751d550d2498c04c4f"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTI1NTUwOX0.Ynu8YlS49hLa5Lii2AdVp-SUHMoQcH0SkFBdsOm3m50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Properties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/properties/mine?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTA5MjMzN30.2yEQel2ma93wi3NaEE33YQ6pXJmTRO4tlQMIKPof7Tk",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"properties",
+								"mine"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTA5MjMzN30.2yEQel2ma93wi3NaEE33YQ6pXJmTRO4tlQMIKPof7Tk"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one property",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/properties/5c7646751d550d2498c04c4f?access_token={{MASTERKEY}}",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"properties",
+								"5c7646751d550d2498c04c4f"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{MASTERKEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete property",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/properties/5c7043109d815e38a7dec372?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MDgzNjc2M30.ZjTBci85UErym804zYAbK9nfj3EKYXmcOh3unVzEtPE",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"properties",
+								"5c7043109d815e38a7dec372"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MDgzNjc2M30.ZjTBci85UErym804zYAbK9nfj3EKYXmcOh3unVzEtPE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete property as favorite",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/properties/fav/5c72d6f8972cb523252cb1b8?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YjE0ODFmMWRmMDAxNzYwYzdkNiIsImlhdCI6MTU1MTAzMDA4Nn0.RAedx-6xIlPNSU9Tjpa30caChWo6ByKfZA6OMQCZFrs",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"properties",
+								"fav",
+								"5c72d6f8972cb523252cb1b8"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YjE0ODFmMWRmMDAxNzYwYzdkNiIsImlhdCI6MTU1MTAzMDA4Nn0.RAedx-6xIlPNSU9Tjpa30caChWo6ByKfZA6OMQCZFrs"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Photos",
+			"item": [
+				{
+					"name": "Add Photo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "propertyId",
+									"value": "5c72d6f8972cb523252cb1b8",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL_REMOTA}}/photos?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTA5MjMzN30.2yEQel2ma93wi3NaEE33YQ6pXJmTRO4tlQMIKPof7Tk",
+							"host": [
+								"{{URL_REMOTA}}"
+							],
+							"path": [
+								"photos"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ5YTAxODFmMWRmMDAxNzYwYzdkNSIsImlhdCI6MTU1MTA5MjMzN30.2yEQel2ma93wi3NaEE33YQ6pXJmTRO4tlQMIKPof7Tk"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Nestoria",
+			"item": [
+				{
+					"name": "https://api.nestoria.es/api?encoding=json&pretty=1&action=search_listings&country=es&listing_type=buy&place_name=sevilla",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "20484841-68e0-4c89-8aa9-7c836c060ab0",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.nestoria.es/api?encoding=json&pretty=1&action=search_listings&country=es&listing_type=buy&place_name=Jerez de la Frontera&number_of_result=10&page=2",
+							"protocol": "https",
+							"host": [
+								"api",
+								"nestoria",
+								"es"
+							],
+							"path": [
+								"api"
+							],
+							"query": [
+								{
+									"key": "encoding",
+									"value": "json"
+								},
+								{
+									"key": "pretty",
+									"value": "1"
+								},
+								{
+									"key": "action",
+									"value": "search_listings"
+								},
+								{
+									"key": "country",
+									"value": "es"
+								},
+								{
+									"key": "listing_type",
+									"value": "buy"
+								},
+								{
+									"key": "place_name",
+									"value": "Jerez de la Frontera"
+								},
+								{
+									"key": "number_of_result",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "98101f2a-7a12-4aee-88f0-41f8fc279dfc",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "51a89268-cf8f-427f-939c-3d397e19acfa",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "20ddce86-ea65-4882-aa84-eeb1c218c246",
+			"key": "MASTERKEY",
+			"value": "hzasFUC4txHXVHHWvjkR2R7UxQ6kzBlw",
+			"type": "string"
+		},
+		{
+			"id": "35bfa7bb-045f-4d10-bda8-7d9cd9ac3d62",
+			"key": "URL_REMOTA",
+			"value": "https://realstatev2.herokuapp.com/",
+			"type": "string"
+		},
+		{
+			"id": "f701016e-7be8-4d8d-be5a-bc0517903118",
+			"key": "URL_LOCAL\n",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+}
