@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { middleware as query, Schema } from 'querymen'
+import { middleware as query, Schema } from '../../services/querymen'
 import { middleware as body } from 'bodymen'
 import { token, master } from '../../services/passport'
 import { create, index, show, update, destroy, userProperties, addFavorite, delFavorite, userFavorites, authenticatedIndex } from './controller'
@@ -55,14 +55,23 @@ const propertiesSchema = new Schema({
   }, 
   category: {
     type: String,
-    paths: [categoryId]
+    paths: ['categoryId']
   },
   address: {
     type: RegExp,
     paths: ['address']
+  },
+  max_distance: {
+    type: Number,
+    paths: ['max_distance']
+  },
+  min_distance: {
+    type: Number,
+    paths: ['min_distance']
   }
-}, {near: true})
 
+}, {near: true})
+//})
 
 /**
  * Fin esquemas querymen
@@ -129,6 +138,58 @@ router.post('/',
 router.get('/',
   master(),
   query(propertiesSchema),
+  /*query(new Schema({
+    rooms: {
+      //type: [Number], // permite añadir el parámetro &rooms=1 o &rooms=1,2,3
+      type: Number,
+      paths: ['rooms']
+    },
+    city: {
+      //type: [String],
+      type: RegExp,
+      paths: ['city']
+    },
+    province: {
+      //type: [String],
+      type: RegExp,
+      paths: ['province']
+    },
+    zipcode: {
+      type: [String],
+      paths: ['zipcode']
+    },
+    min_size: {
+      type: Number,
+      paths: ['size'],
+      operator: '$gte'
+    },
+    max_size: {
+      type: Number,
+      paths: ['size'],
+      operator: '$lte'
+    },
+    min_price: {
+      type: Number,
+      paths: ['price'],
+      operator: '$gte'
+    },
+    max_price: {
+      type: Number,
+      paths: ['price'],
+      operator: '$lte'
+    },
+    near: {
+      paths: ['loc']    
+    }, 
+    category: {
+      type: String,
+      paths: [categoryId]
+    },
+    address: {
+      type: RegExp,
+      paths: ['address']
+    }
+  }, {near: true})),*/
   index)
 
 

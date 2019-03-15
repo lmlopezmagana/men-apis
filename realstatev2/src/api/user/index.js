@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { middleware as query } from 'querymen'
+import { middleware as query, Schema } from '../../services/querymen'
 import { middleware as body } from 'bodymen'
 import { password as passwordAuth, master, token } from '../../services/passport'
 import { index, showMe, show, create, update, updatePassword, destroy } from './controller'

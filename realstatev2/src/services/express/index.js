@@ -3,7 +3,7 @@ import cors from 'cors'
 import compression from 'compression'
 import morgan from 'morgan'
 import bodyParser from 'body-parser'
-import { errorHandler as queryErrorHandler } from 'querymen'
+import { errorHandler as queryErrorHandler } from '../querymen/index'
 import { errorHandler as bodyErrorHandler } from 'bodymen'
 import { env } from '../../config'
 

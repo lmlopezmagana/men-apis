@@ -66,9 +66,24 @@ let queryAllPhotos = (property) => {
   })
 }
 
+function busqueda_localizacion(query) {
+  if (query['max_distance'] != null)
+    if (query['loc'] != null) {
+      query['loc'].$near.$maxDistance = query['max_distance']
+      delete query.max_distance
+    }
+  if (query['min_distance'] != null)
+    if (query['loc'] != null) {
+      query['loc'].$near.$minDistance = query['min_distance']
+      delete query.min_distance
+    }
+}
 
 export const index = ({ params  , querymen: { query, select, cursor } }, res, next) => {
-  Property
+  // console.log("Query:" + JSON.stringify(query))
+  // console.log("Params: " + JSON.stringify(params))
+    busqueda_localizacion(query)
+    Property
     .find(query, select, cursor)
     .populate('ownerId', 'name picture')
     .populate('categoryId', 'name')
@@ -87,6 +102,8 @@ export const index = ({ params  , querymen: { query, select, cursor } }, res, ne
 }
 
 export const authenticatedIndex = ({ user, querymen: { query, select, cursor } }, res, next) => {
+  busqueda_localizacion(query)
+
   Property
     .find(query, select, cursor)
     .populate('ownerId', 'name picture')
@@ -115,6 +132,8 @@ export const authenticatedIndex = ({ user, querymen: { query, select, cursor } }
 
 export const userProperties = ({user, querymen: { query, select, cursor } }, res, next) => {
   query['ownerId'] = user.id
+  busqueda_localizacion(query)
+
   Property
   .find(query, select, cursor)
   .populate('categoryId', 'name')
@@ -183,6 +202,8 @@ export const delFavorite = ({user, params}, res, next) =>
 
 export const userFavorites = ({ user, querymen: { query, select, cursor } }, res, next) => {
   query['_id'] = { $in: user.favs }
+  busqueda_localizacion(query)
+
   Property
     .find(query, select, cursor)
     .populate('categoryId', 'name')
